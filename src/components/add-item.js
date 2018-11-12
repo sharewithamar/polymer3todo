@@ -12,12 +12,27 @@ class AddItem extends LitElement {
 
     constructor() {
         super();
-        this.todoItem = 'Amar gonna become a great value investor'
+        this.todoItem = ''
     }
 
+    inputKeyPress(e) {
+        console.log(this.todoItem)
+
+        if (e.keyCode == 13) {
+            //call add item function
+        }
+        else {
+            console.log(e.target.value)
+            this.todoItem = e.target.value
+        }
+    }
     render() {
         const { todoList, todoItem } = this;
-        return html` <h2> ${todoItem}</h2>`
+        return html`<div> 
+         <input value=${this.todoItem} 
+         @keyup="${(e) => this.inputKeyPress(e)}"
+         </input>
+        </div>`
     }
 }
 
