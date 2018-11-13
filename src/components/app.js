@@ -17,6 +17,11 @@ class TodoApp extends LitElement {
 
         console.log(this.todoList)
     }
+    firstUpdated() {
+        this.addEventListener('addItem', (e) => {
+            this.todoList = e.detail.todoList;
+        })
+    }
 
     render() {
 

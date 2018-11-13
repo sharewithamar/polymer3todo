@@ -39,6 +39,7 @@ class AddItem extends LitElement {
             })
 
             localStorage.setItem('todo-list', JSON.stringify(storedTodoList));
+            this.dispatchEvent(new CustomEvent('addItem', { bubbles: true, composed: true, detail: { todoList: storedTodoList } }))
             this.todoItem = '';
 
         }
