@@ -15,11 +15,28 @@ class TodoApp extends LitElement {
         let list = JSON.parse(localStorage.getItem('todo-list'))
         this.todoList = list === null ? [] : list;
 
-        console.log(this.todoList)
     }
     firstUpdated() {
         this.addEventListener('addItem', (e) => {
             this.todoList = e.detail.todoList;
+        })
+
+        this.addEventListener('removeItem', (e) => {
+            // console.log(e.detail.item)
+
+            // let index = this.todoList.map(item=> item.id)
+            let index = this.todoList.findIndex(x => x.id == e.detail.item);
+            console.log(index)
+            this.todoList.splice(index, 1)
+            console.log(this.todoList)
+
+            this.todoList = this.todoList.slice()
+            console.log(this.todoList)
+
+            localStorage.setItem('todo-list', JSON.stringify(this.todoList));
+
+            // console.log(index)
+
         })
     }
 

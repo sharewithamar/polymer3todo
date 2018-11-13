@@ -16,13 +16,13 @@ class AddItem extends LitElement {
     }
 
     inputKeyPress(e) {
-        console.log(this.todoItem)
+        //  console.log(this.todoItem)
 
         if (e.keyCode == 13) {
             this.onAddItem()
         }
         else {
-            console.log(e.target.value)
+            // console.log(e.target.value)
             this.todoItem = e.target.value
         }
     }
