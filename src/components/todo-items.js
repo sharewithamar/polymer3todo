@@ -13,9 +13,17 @@ class TodoItem extends LitElement {
     onRemove(id) {
         this.dispatchEvent(new CustomEvent('removeItem', { bubbles: true, composed: true, detail: { item: id } }));
     }
+    onDone(id) {
+        this.dispatchEvent(new CustomEvent('changeItem', { bubbles: true, composed: true, detail: { item: id } }));
+        this.requestUpdate();
+    }
     render() {
-        return html`<li>${this.todoItem.item}</li>
-        <button @click=${() => this.onRemove(this.todoItem.id)}>Remove</button>`
+        return html`<li>
+        <input type="checkbox" .checked=${this.todoItem.done} @click= ${() => this.onDone(this.todoItem.id)}>
+        ${this.todoItem.item}
+         <button @click=${() => this.onRemove(this.todoItem.id)}>Remove</button>
+        </li>
+       `
     }
 }
 
